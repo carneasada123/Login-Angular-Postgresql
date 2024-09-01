@@ -1,0 +1,29 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <div>
+      <label for="correo">Correo</label>
+      <input type="email" id="correo" formControlName="correo" required>
+      <div *ngIf="registerForm.controls['correo'].invalid && registerForm.controls['correo'].touched">
+        Please enter a valid email.
+      </div>
+    </div>
+    <div>
+      <label for="clave">Clave</label>
+      <input type="password" id="clave" formControlName="clave" required>
+      <div *ngIf="registerForm.controls['clave'].invalid && registerForm.controls['clave'].touched">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+    <div>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" formControlName="nombre" required>
+      <div *ngIf="registerForm.controls['nombre'].invalid && registerForm.controls['nombre'].touched">
+        Please enter your name.
+      </div>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+</div>
